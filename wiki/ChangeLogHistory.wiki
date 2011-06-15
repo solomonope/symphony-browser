@@ -10,7 +10,7 @@
   * Tab preview added
 
 *Fixed Bugs:*
-  * None
+  * Website favicons are now deleted every time you start up the browser. This should help reduce the amount of website icon glitches that the browser has.
 
 
 = V0.0.003 -> V0.0.004 =
