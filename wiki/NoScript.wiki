@@ -2,7 +2,7 @@
 
 = Introduction =
 
-!NoScript is an included functionality in Symphony. It is designed to allow you to toggle on or off javascript and plugins(ex. flash) per website.
+*!NoScript* is an included functionality in Symphony. It is designed to allow you to toggle on or off javascript and plugins(ex. flash) per website.
 
 Inspiration for Symphony's !NoScript functionality came from Firefox's !NoScript plugin. See for more info:
 http://noscript.net
