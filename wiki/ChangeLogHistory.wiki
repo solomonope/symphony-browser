@@ -1,10 +1,22 @@
 #summary Latest and previous patch notes for Symphony
 #labels Featured
 
+= V0.0.004 -> V0.0.005 =
+*Backend Stuff:*
+  * None
+
+*Frontend Stuff:*
+  * Tab Status bar removed
+  * Tab preview added
+
+*Fixed Bugs:*
+  * None
+
+
 = V0.0.003 -> V0.0.004 =
 *Backend Stuff:*
   * The browser object is now directly connected to the tab button
-  * optimizations
+  * Minor optimizations
 
 *Frontend Stuff:*
   * One or two minor text changes
