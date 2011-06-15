@@ -1,0 +1,7 @@
+#summary Symphony's parent company
+
+= Introduction =
+
+SymphSoftware is a `currently one-man` software-developing company. 
+
+Their main product at the moment is Symphony.
