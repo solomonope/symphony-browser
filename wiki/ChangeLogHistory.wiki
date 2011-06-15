@@ -1,4 +1,6 @@
+#summary Latest and previous patch notes for Symphony
 #labels Featured
+
 = V0.0.003 -> V0.0.004 =
 *Backend Stuff:*
   * The browser object is now directly connected to the tab button
