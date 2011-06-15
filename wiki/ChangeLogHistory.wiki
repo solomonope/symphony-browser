@@ -1,6 +1,10 @@
 #summary Latest and previous patch notes for Symphony
 #labels Featured
 
+== Table of Contents ==
+<wiki:toc max_depth="1" />
+----
+
 = V0.0.004 -> V0.0.005 =
 *Backend Stuff:*
   * None
