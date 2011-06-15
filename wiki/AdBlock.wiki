@@ -2,7 +2,7 @@
 
 = Introduction =
 
-*!AdBlock* is based on the popular AdBlockPlus, and currently uses !AdBlockPlus' *EasyList*.
+*!AdBlock* is based on the popular AdBlockPlus, and currently uses !AdBlockPlus' EasyList.
 
 
 = Details =
