@@ -5,6 +5,19 @@
 <wiki:toc max_depth="1" />
 ----
 
+= V0.0.005 -> V0.0.006 =
+*Backend Stuff:*
+  * Cache system added
+  * Minor optimizations
+
+*Frontend Stuff:*
+  * None
+
+*Fixed Bugs:*
+  * Bug that was disabling flash and other plugins has been fixed
+  * The tab bar has had several moderate visual bugs patched, and should now be in tip-top condition
+
+
 = V0.0.004 -> V0.0.005 =
 *Backend Stuff:*
   * None
