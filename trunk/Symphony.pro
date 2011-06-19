@@ -8,7 +8,6 @@ QT       += core gui
 QT       += webkit
 QT       += xml
 QT       += network
-QT       += multimedia
 
 TARGET = Symphony
 TEMPLATE = app
