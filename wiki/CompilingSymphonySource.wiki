@@ -52,11 +52,11 @@ Symphony requires these libraries from *OpenSSL*:
 Symphony requires these libraries from *Qt 4.7.3*:
 
   * phonon4
-  * QtCore4
-  * QtGui4
-  * QtNetwork4
-  * QtWebkit4
-  * QtXml4
+  * !QtCore4
+  * !QtGui4
+  * !QtNetwork4
+  * !QtWebkit4
+  * !QtXml4
 
 All of the aforementioned libraries need to be compiled and included in the same folder as the Symphony binary file.
 
