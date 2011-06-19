@@ -18,7 +18,9 @@ Qt needs to be configured pre-compilation with these flags:
 
 `-prefix c:\qt\4.7.3 -qt-gif -qt-libpng -qt-libjpeg -qt-libmng -qt-libtiff -platform win32-msvc2008 -openssl-linked -I C:\OpenSSL-Win32\include -L C:\OpenSSL-Win32\lib`
 
-Please note that _*C:\OpenSSL-Win32\lib*_ and _*C:\OpenSSL-Win32\include*_ need to be changed to valid directories, pointing at a compiled version of OpenSSL.
+Please note that _*c:\qt\4.7.3*_ should be changed to the base directory of where your Qt 4.7.3 lies. (the src folder should be in this directory. i.e. c:\qt\4.7.3\src)
+
+You will also need to note that _*C:\OpenSSL-Win32\lib*_ and _*C:\OpenSSL-Win32\include*_ need to be changed to valid directories, pointing at a compiled version of OpenSSL.
 
 == OpenSSL ==
 
