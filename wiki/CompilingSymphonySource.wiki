@@ -28,15 +28,15 @@ More info, including download links, involving OpenSSL can be found at:
 
 http://www.openssl.org
 
-== QtWebkit ==
+== !QtWebkit ==
 
-QtWebkit is Symphony's backend web engine. It is a branch of Apple Webkit designed specially for Qt.
+!QtWebkit is Symphony's backend web engine. It is a branch of Apple Webkit designed specially for Qt.
 
-It is also highly recommended that you use the latest version of QtWebkit. 
+It is also highly recommended that you use the latest version of !QtWebkit. 
 
-QtWebkit needs to be compiled seperately from Qt.
+!QtWebkit needs to be compiled seperately from Qt.
 
-Currently, Symphony uses the latest beta version of QtWebkit 2.2. More info about QtWebkit 2.2 here:
+Currently, Symphony uses the latest - currently beta - version of !QtWebkit 2.2. More info about !QtWebkit 2.2 here:
 
 http://trac.webkit.org/wiki/QtWebKitRelease22
 
