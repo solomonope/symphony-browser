@@ -67,3 +67,5 @@ You will also need to create a new folder inside the folder that contains all of
 Name this folder _*data*_.
 
 Then, inside the _*data*_ folder, create a folder named _*cache*_.
+
+You will also need to copy the _*imageformats*_ folder from the Qt source (usually found at _*/src/plugins/imageformats*_) in to the folder that contains the Symphony binary file.
