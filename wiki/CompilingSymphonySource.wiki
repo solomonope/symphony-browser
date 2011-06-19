@@ -9,6 +9,10 @@ Symphony is compiled with OpenSSL, as well as with several other configuration f
 
 = Details =
 
+The Qt source can be downloaded from:
+
+http://qt.nokia.com/downloads/downloads#qt-lib
+
 Qt _needs_ to be compiled from source. Qt needs to be version *4.7.3*.
 Qt needs to be configured pre-compilation with these flags:
 
