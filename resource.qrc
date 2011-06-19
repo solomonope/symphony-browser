@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>refresh.png</file>
+        <file>addbookmark.png</file>
+        <file>back.png</file>
+        <file>bookmarks.png</file>
+        <file>forward.png</file>
+        <file>home.png</file>
+        <file>mainmenu.png</file>
+        <file>statusbtn.png</file>
+        <file>symphony.png</file>
+        <file>stop.png</file>
+        <file>go.png</file>
+        <file>newtab.png</file>
+        <file>blank.png</file>
+        <file>loading.png</file>
+        <file>noscript.png</file>
+        <file>left.png</file>
+        <file>right.png</file>
+        <file>tabmenu.png</file>
+    </qresource>
+</RCC>
