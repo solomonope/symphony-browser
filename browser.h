@@ -13,7 +13,7 @@
 #include <QHostInfo>
 #include "completer.h"
 #include "tabs.h"
-#include "tabsbar.h"
+#include "tabbar.h"
 #include "browser.h"
 #include "highlighter.h"
 #include "tab.h"
@@ -36,7 +36,7 @@ namespace Ui {
 class AdBlockSubscription;
 class NetworkAccessManager;
 class Tabs;
-class TabsBar;
+class TabBar;
 class SymphPluginFactory;
 class BrowserView;
 class Highlighter;

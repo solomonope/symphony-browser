@@ -6,6 +6,7 @@
 #include <QString>
 #include "tab.h"
 
+class Tab;
 class TabButton : public QPushButton
 {
     Q_OBJECT
