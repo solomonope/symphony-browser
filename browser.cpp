@@ -106,7 +106,7 @@ void browser::doLoad() //Handles all functions that occur on browser launch
 
     QString statusStylesheet = "border: 0;";
     QString statusBackColor = palette().window().color().name();
-    statusStylesheet.append(" background-color: " % statusBackColor % ";");
+    statusStylesheet.append("background-color: " % statusBackColor % ";");
     ui->statusBar->setStyleSheet(statusStylesheet);
 
     QSettings settings("data/settings.dat", QSettings::IniFormat);
@@ -311,6 +311,8 @@ void browser::addTab(QString urlStr, bool privateBrowsing) //Add a tab with a sp
 
     //Set up events
 
+    connect(newWeb->page(), SIGNAL(unsupportedContent(QNetworkReply*)), SLOT(handleUnsupportedContent(QNetworkReply*)));
+    connect(newWeb->page(), SIGNAL(downloadRequested(const QNetworkRequest&)), SLOT(doDownload(const QNetworkRequest&)));
     connect(newWeb->page(), SIGNAL(linkHovered(QString,QString,QString)), SLOT(link_hovered(QString,QString,QString)));
     connect(newWeb->page(), SIGNAL(windowCloseRequested()), SLOT(handleCloseWindow()));
     connect(newWeb, SIGNAL(titleChanged(QString)), SLOT(title_changed(QString)));
@@ -364,6 +366,8 @@ void browser::addTab(QString theTitle, bool privateBrowsing, BrowserView *newWeb
 
     //Set up events
 
+    connect(newWeb->page(), SIGNAL(unsupportedContent(QNetworkReply*)), SLOT(handleUnsupportedContent(QNetworkReply*)));
+    connect(newWeb->page(), SIGNAL(downloadRequested(const QNetworkRequest&)), SLOT(doDownload(const QNetworkRequest&)));
     connect(newWeb->page(), SIGNAL(linkHovered(QString,QString,QString)), SLOT(link_hovered(QString,QString,QString)));
     connect(newWeb->page(), SIGNAL(windowCloseRequested()), SLOT(handleCloseWindow()));
     connect(newWeb, SIGNAL(titleChanged(QString)), SLOT(title_changed(QString)));
@@ -784,6 +788,33 @@ void browser::enableESMode() //Enable Extra Secure Mode
 {
     setMode(3);
     tabs->refreshAll();
+}
+
+void browser::handleUnsupportedContent(QNetworkReply *reply) //Todo: Add more fancy download support
+{
+    if (reply->error() == QNetworkReply::NoError && reply->header(QNetworkRequest::ContentTypeHeader).isValid()) {
+        QMessageBox alert;
+        alert.setText("Download will commence in background. When download has finished, you will be asked to save file.\nFor URL: " % reply->url().toString() % "\nAre you sure you want to continue?");
+        alert.setWindowTitle("Download Confirmation - Symphony");
+        QPushButton *yes = alert.addButton(QMessageBox::Yes);
+        alert.addButton(QMessageBox::No);
+        alert.exec();
+        if (alert.clickedButton() == yes)
+            downMgr->doDownload(reply->url());
+        tabs->getCurrBrowser()->reload();
+    }
+}
+
+void browser::doDownload(const QNetworkRequest &request)
+{
+    QMessageBox alert;
+    alert.setText("Download will commence in background. When download has finished, you will be asked to save file.\nFor URL: " % request.url().toString() % "\nAre you sure you want to continue?");
+    alert.setWindowTitle("Download Confirmation - Symphony");
+    QPushButton *yes = alert.addButton(QMessageBox::Yes);
+    alert.addButton(QMessageBox::No);
+    alert.exec();
+    if (alert.clickedButton() == yes)
+        downMgr->doDownload(request.url());
 }
 
 void browser::load_start() //Handles website loading start

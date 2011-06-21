@@ -138,6 +138,8 @@ private slots:
     void enablePMode();
     void enableSMode();
     void enableESMode();
+    void handleUnsupportedContent(QNetworkReply *reply);
+    void doDownload(const QNetworkRequest &request);
     void load_start();
     void load_progress(int i);
     void load_finish(bool b);

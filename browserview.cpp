@@ -13,7 +13,6 @@ BrowserView::BrowserView(QWidget *parent) : //Constructor
     isLoading = false;
     progress = 0;
     gesturePixel = 25; //The minimum pixels needed for the mouse to move with right click held down for it to register as a mouse gesture
-    page()->setForwardUnsupportedContent(true);
     page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
     page()->setForwardUnsupportedContent(true);
     connect(this, SIGNAL(linkClicked(QUrl)), SLOT(handleClickedLink(QUrl)));

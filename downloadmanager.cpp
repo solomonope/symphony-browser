@@ -65,7 +65,7 @@
      QWidget widg;
      QString filename = QFileDialog::getSaveFileName(
               &widg,
-             "Save Document - " + basename,
+             "Save File - " + basename,
              QDir::currentPath(),
              "All files (*.*)");
      return filename;
