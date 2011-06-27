@@ -5,6 +5,17 @@
 <wiki:toc max_depth="1" />
 ----
 
+= V0.0.006 -> V0.0.007 =
+*Backend Stuff:*
+  * None
+
+*Frontend Stuff:*
+  * The bookmark system has been updated a tad. You are now presented with a small window whenever you add a bookmark, where you will be able to modify the name and url of the bookmark.
+ * The download system has been slightly modified. It will now be easier to use and understand. All downloads are currently saved to the *downloads* folder inside the _Symphony Browser_ folder. This will be made configurable soon.
+
+*Fixed Bugs:*
+  * Downloading files should now work fine all the time.
+
 = V0.0.005 -> V0.0.006 =
 *Backend Stuff:*
   * Cache system added
