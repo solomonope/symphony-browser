@@ -31,6 +31,7 @@
 namespace Ui {
     class browser;
     class findDialog;
+    class addBookmark;
 }
 
 class AdBlockSubscription;
@@ -73,7 +74,7 @@ public:
     void saveTabs();
     void restoreTabs();
     void setStatusTxt(QString txt);
-    void addBookmark(QString url, QString title);
+    void doAddBookmark(QString url, QString title);
     void doNavigate(QString = QString());
     void alert(QString str);
     void saveTabSession();
@@ -83,6 +84,7 @@ public:
     static bool* adBlock2Enabled();
     QMainWindow *noScriptWind;
     QDialog *findWind;
+    QDialog *addBookmarkWind;
     TabBar *tabBar;
     Loader *loader;
     QString *homePage;
@@ -120,6 +122,7 @@ public:
 private:
     Ui::browser *ui;
     Ui::findDialog *findDialog;
+    Ui::addBookmark *addBookmark;
     static AdBlockSubscription *m_subscrip;
     static bool *m_adBlockEnabled;
     static bool *m_adBlock2Enabled;
@@ -157,6 +160,8 @@ private slots:
     void showFind();
     void doFind();
     void closeFind();
+    void finAddBookmark();
+    void closeAddBookmark();
     void saveAs();
     void doPrint();
     void enableInspect();
