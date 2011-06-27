@@ -8,6 +8,7 @@ QT       += core gui
 QT       += webkit
 QT       += xml
 QT       += network
+QT       += multimedia
 
 TARGET = Symphony
 TEMPLATE = app
@@ -71,7 +72,8 @@ HEADERS  += browser.h \
 
 FORMS    += browser.ui \
     finddialog.ui \
-    preferences.ui
+    preferences.ui \
+    addbookmark.ui
 
 OTHER_FILES +=
 

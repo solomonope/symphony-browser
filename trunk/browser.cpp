@@ -1,6 +1,7 @@
 #include "browser.h"
 #include "ui_browser.h"
 #include "ui_finddialog.h"
+#include "ui_addbookmark.h"
 #include <QVBoxLayout>
 #include <QUrl>
 #include <QMessageBox>
@@ -41,7 +42,8 @@ AdBlockSubscription* browser::m_subscrip = 0;
 browser::browser(QWidget *parent, Loader *v_loader) : //Constructor. Most of the fun stuff happens in doLoad method
     QMainWindow(parent),
     ui(new Ui::browser),
-    findDialog(new Ui::findDialog)
+    findDialog(new Ui::findDialog),
+    addBookmark(new Ui::addBookmark)
 {
     ui->setupUi(this);
     loader = v_loader;
@@ -153,6 +155,18 @@ void browser::doLoad() //Handles all functions that occur on browser launch
     connect(findDialog->buttonBox, SIGNAL(accepted()), this, SLOT(doFind()));
     connect(findDialog->buttonBox, SIGNAL(rejected()), this, SLOT(closeFind()));
     connect(findWind, SIGNAL(rejected()), SLOT(closeFind()));
+
+    addBookmarkWind = new QDialog(this);
+    addBookmark->setupUi(addBookmarkWind);
+    QPushButton *addBtn = new QPushButton("Add");
+    addBtn->setDefault(true);
+    QPushButton *closeBtn2 = new QPushButton("Cancel");
+    closeBtn2->setAutoDefault(false);
+    addBookmark->buttonBox->addButton(addBtn, QDialogButtonBox::AcceptRole);
+    addBookmark->buttonBox->addButton(closeBtn2, QDialogButtonBox::RejectRole);
+    connect(addBookmark->buttonBox, SIGNAL(accepted()), this, SLOT(finAddBookmark()));
+    connect(addBookmark->buttonBox, SIGNAL(rejected()), this, SLOT(closeAddBookmark()));
+    connect(addBookmarkWind, SIGNAL(rejected()), SLOT(closeFind()));
 
     //Togglable QActions [for menus]
     privBrowsing = new QAction("Enable Private Browsing", this);
@@ -422,10 +436,14 @@ void browser::setStatusTxt(QString txt) //Sets the status bar text, or tooltip t
     ui->statusBar->setText("         " % txt);
 }
 
-void browser::addBookmark(QString url, QString title) //Adds bookmark
+void browser::doAddBookmark(QString url, QString title) //Adds bookmark
 {
-    bookmarks->addItem(title, url);
-    alert("Bookmarked added successfully.");
+    addBookmark->titleBox->setText(title);
+    addBookmark->titleBox->home(false);
+    addBookmark->urlBox->setText(url);
+    addBookmark->urlBox->home(false);
+    addBookmarkWind->exec();
+
 }
 
 void browser::doNavigate(QString url) //Handles navigating to a website.
@@ -794,7 +812,7 @@ void browser::handleUnsupportedContent(QNetworkReply *reply) //Todo: Add more fa
 {
     if (reply->error() == QNetworkReply::NoError && reply->header(QNetworkRequest::ContentTypeHeader).isValid()) {
         QMessageBox alert;
-        alert.setText("Download will commence in background. When download has finished, you will be asked to save file.\nFor URL: " % reply->url().toString() % "\nAre you sure you want to continue?");
+        alert.setText("Download will commence in background.\nFor file: " % QFileInfo(reply->url().path()).fileName() % "\nAre you sure you want to continue?");
         alert.setWindowTitle("Download Confirmation - Symphony");
         QPushButton *yes = alert.addButton(QMessageBox::Yes);
         alert.addButton(QMessageBox::No);
@@ -808,7 +826,7 @@ void browser::handleUnsupportedContent(QNetworkReply *reply) //Todo: Add more fa
 void browser::doDownload(const QNetworkRequest &request)
 {
     QMessageBox alert;
-    alert.setText("Download will commence in background. When download has finished, you will be asked to save file.\nFor URL: " % request.url().toString() % "\nAre you sure you want to continue?");
+    alert.setText("Download will commence in background.\nFor file: " % QFileInfo(request.url().path()).fileName() % "\nAre you sure you want to continue?");
     alert.setWindowTitle("Download Confirmation - Symphony");
     QPushButton *yes = alert.addButton(QMessageBox::Yes);
     alert.addButton(QMessageBox::No);
@@ -1168,6 +1186,19 @@ void browser::closeFind() //Closes find dialog and resets everything.
     findWind->close();
 }
 
+void browser::finAddBookmark()
+{
+    bookmarks->addItem(addBookmark->titleBox->text(), addBookmark->urlBox->text());
+    addBookmarkWind->close();
+}
+
+void browser::closeAddBookmark()
+{
+    addBookmark->titleBox->setText("");
+    addBookmark->urlBox->setText("");
+    addBookmarkWind->close();
+}
+
 void browser::saveAs() //Save website as HTML file
 {
 
@@ -1360,7 +1391,7 @@ void browser::showShortcuts() //Shows QMessageBox with more info about shortcuts
 
 void browser::showAbout() //The about window of course - showed in a QMessageBox
 {
-    alert("Symphony\nVersion: Alpha V0.0.006\nLicensed under the GNU General Public License V3.0\nCopyright  2011-Now  SymphSoftware  All Rights Reserved");
+    alert("Symphony\nVersion: Alpha V0.0.007\nLicensed under the GNU General Public License V3.0\nCopyright  2011-Now  SymphSoftware  All Rights Reserved");
 }
 
 void browser::on_homeBtn_clicked() //Go 'home'
@@ -1460,7 +1491,7 @@ void browser::on_bookmarkBtn_clicked() //Displays all current bookmarks in QMenu
 void browser::on_addBookmark_clicked() //Adds current site to bookmarks
 {
     BrowserView *currBrowser = tabs->getCurrBrowser();
-    addBookmark(currBrowser->url().toString(), currBrowser->title());
+    doAddBookmark(currBrowser->url().toString(), currBrowser->title());
 }
 
 void browser::on_goBtn_clicked() //Navigate when Go button is clicked...

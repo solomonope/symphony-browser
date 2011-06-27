@@ -60,15 +60,15 @@
 
  QString DownloadManager::saveFileName(const QUrl &url) //Saves QUrl to hard disk - user specifies file location via QFileDialog
  {
-     QString path = url.path();
+     /* QString path = url.path();
      QString basename = QFileInfo(path).fileName();
      QWidget widg;
      QString filename = QFileDialog::getSaveFileName(
               &widg,
              "Save File - " + basename,
              QDir::currentPath(),
-             "All files (*.*)");
-     return filename;
+             "All files (*.*)"); */
+     return "downloads/" + QFileInfo(url.path()).fileName();
  }
 
  bool DownloadManager::saveToDisk(const QString &filename, QIODevice *data) //Downloads and saves file to specified location
