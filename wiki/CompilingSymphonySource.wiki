@@ -24,7 +24,9 @@ You will also need to note that _*C:\OpenSSL-Win32\lib*_ and _*C:\OpenSSL-Win32\
 
 == boost ==
 boost is one of the libraries that Symphony requires while compiling.
+
 boost can be downloaded at:
+
 http://www.boost.org/users/download
 
 == OpenSSL ==
