@@ -5,7 +5,7 @@
 
 Symphony currently uses *Qt 4.7.3* and *C++*.
 
-Symphony is compiled with OpenSSL, as well as with several other configuration flags.
+Symphony is compiled with OpenSSL, boost, as well as with several other configuration flags.
 
 = Details =
 
@@ -21,6 +21,11 @@ Qt needs to be configured pre-compilation with these flags:
 Please note that _*c:\qt\4.7.3*_ should be changed to the base directory of where your Qt 4.7.3 lies. (the src folder should be in this directory. i.e. c:\qt\4.7.3\src)
 
 You will also need to note that _*C:\OpenSSL-Win32\lib*_ and _*C:\OpenSSL-Win32\include*_ need to be changed to valid directories, pointing at a compiled version of OpenSSL.
+
+== boost ==
+boost is one of the libraries that Symphony requires while compiling.
+boost can be downloaded at:
+http://www.boost.org/users/download
 
 == OpenSSL ==
 
